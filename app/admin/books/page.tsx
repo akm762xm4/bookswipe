@@ -176,7 +176,8 @@ export default function AdminBooksPage() {
         {listError && <div className="text-sm text-red-400 mb-2">{listError}</div>}
 
         <Card className="p-0 overflow-hidden">
-          <table className="w-full text-sm">
+          <div className="overflow-x-auto" data-swipe-lock="true">
+            <table className="min-w-[760px] w-full text-sm">
             <thead className="bg-slate-800 text-slate-300">
               <tr>
                 <th className="text-left px-4 py-2">Title</th>
@@ -212,7 +213,8 @@ export default function AdminBooksPage() {
                 </tr>
               )}
             </tbody>
-          </table>
+            </table>
+          </div>
         </Card>
       </div>
     );

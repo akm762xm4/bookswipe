@@ -45,3 +45,21 @@ body {
   border: 1px solid rgba(255,255,255,0.2);
   backdrop-filter: blur(20px);
 }
+
+@keyframes swipe-in-left {
+  0% { opacity: 0; transform: translateX(20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes swipe-in-right {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.swipe-in-left {
+  animation: swipe-in-left 220ms ease-out;
+}
+
+.swipe-in-right {
+  animation: swipe-in-right 220ms ease-out;
+}
