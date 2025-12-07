@@ -17,10 +17,18 @@ const variants: Record<Variant, string> = {
     "bg-slate-800 text-slate-100 hover:bg-slate-700 border border-slate-700",
   ghost:
     "bg-transparent text-slate-100 hover:bg-slate-800/60 border border-transparent",
-  destructive:
-    "bg-red-600 text-white hover:bg-red-500",
+  destructive: "bg-red-600 text-white hover:bg-red-500",
 };
 
-export function Button({ variant = "primary", className = "", ...props }: Props) {
-  return <button className={`${base} ${variants[variant]} ${className}`} {...props} />;
+export function Button({
+  variant = "primary",
+  className = "",
+  ...props
+}: Props) {
+  return (
+    <button
+      className={`${base} ${variants[variant]} ${className}`}
+      {...props}
+    />
+  );
 }

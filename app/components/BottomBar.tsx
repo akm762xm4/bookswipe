@@ -4,7 +4,6 @@ import {
   House,
   ShoppingCart,
   User,
-  Search,
   Heart,
   BookOpen,
   ClipboardList,
@@ -15,22 +14,24 @@ import React from "react";
 
 const userTabs = [
   { href: "/", label: "Home", icon: <House className="w-4 h-4" /> },
-  { href: "/explore", label: "Explore", icon: <Search className="w-4 h-4" /> },
   { href: "/cart", label: "Cart", icon: <ShoppingCart className="w-4 h-4" /> },
   { href: "/wishlist", label: "Wishlist", icon: <Heart className="w-4 h-4" /> },
+  {
+    href: "/orders",
+    label: "Orders",
+    icon: <ClipboardList className="w-4 h-4" />,
+  },
   { href: "/profile", label: "Profile", icon: <User className="w-4 h-4" /> },
 ];
 
 const adminTabs = [
-  { href: "/", label: "Home", icon: <House className="w-4 h-4" /> },
-  { href: "/explore", label: "Explore", icon: <Search className="w-4 h-4" /> },
   {
     href: "/admin/books",
     label: "Manage",
     icon: <BookOpen className="w-4 h-4" />,
   },
   {
-    href: "/orders",
+    href: "/admin/orders",
     label: "Orders",
     icon: <ClipboardList className="w-4 h-4" />,
   },
@@ -45,7 +46,7 @@ export function BottomBar() {
     let mounted = true;
     (async () => {
       try {
-        const res = await fetch("/api/auth/me");
+        const res = await fetch("/api/auth/me", { cache: "no-store" });
         if (res.ok) {
           const j = await res.json();
           if (mounted) setRole(j.role === "ADMIN" ? "ADMIN" : "USER");
@@ -59,11 +60,19 @@ export function BottomBar() {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [pathname]);
 
   return (
-    <div className="md:hidden fixed left-1/2 -translate-x-1/2 bottom-4 w-[92%] max-w-md z-50">
-      <div className="rounded-3xl px-4 py-2 flex justify-between items-end shadow-[0_8px_30px_rgb(255,255,255,0.05)] border border-white/20 bg-[rgba(255,255,255,0.15)] backdrop-blur-2xl">
+    <div
+      className={`md:hidden fixed left-1/2 -translate-x-1/2 bottom-4 ${
+        role === "ADMIN" ? "w-auto" : "w-[92%] max-w-md"
+      } z-50`}
+    >
+      <div
+        className={`rounded-3xl px-4 py-2 flex ${
+          role === "ADMIN" ? "justify-center gap-6" : "justify-between"
+        } items-end shadow-[0_8px_30px_rgb(255,255,255,0.05)] border border-white/20 bg-[rgba(255,255,255,0.15)] backdrop-blur-2xl`}
+      >
         {(role === "ADMIN" ? adminTabs : userTabs).map((tab) => {
           const active =
             tab.href === "/"

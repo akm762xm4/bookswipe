@@ -22,14 +22,22 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 /* Glass and animation utilities */
 @keyframes tab-pop {
-  0% { transform: scale(1); }
-  60% { transform: scale(1.15); }
-  100% { transform: scale(1.1); }
+  0% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1.1);
+  }
 }
 
 .animate-tab-pop {
@@ -37,23 +45,36 @@ body {
 }
 
 .soft-shadow {
-  box-shadow: 0 8px 30px rgba(255,255,255,0.05);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.05);
 }
 
 .glass {
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 @keyframes swipe-in-left {
-  0% { opacity: 0; transform: translateX(20px); }
-  100% { opacity: 1; transform: translateX(0); }
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes swipe-in-right {
-  0% { opacity: 0; transform: translateX(-20px); }
-  100% { opacity: 1; transform: translateX(0); }
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .swipe-in-left {

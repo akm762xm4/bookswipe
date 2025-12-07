@@ -37,8 +37,7 @@ export default function RegisterPage() {
         const data = await res.json().catch(() => ({}));
         throw new Error(data.message || "Registration failed");
       }
-      // On success, send user to login
-      window.location.href = "/auth/login";
+      router.push("/");
     } catch (err: any) {
       setError(err.message);
     } finally {

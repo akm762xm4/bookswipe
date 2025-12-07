@@ -30,15 +30,7 @@ export default async function HomePage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-semibold">BookSwipe</h1>
-        {!isAdmin && (
-          <Link
-            href="/admin"
-            className="rounded-xl bg-indigo-600 px-3 py-2 text-sm text-white hover:bg-indigo-500"
-          >
-            Admin Login
-          </Link>
-        )}
+        <h1 className="text-2xl font-semibold">Kee.tab</h1>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
